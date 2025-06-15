@@ -1,21 +1,21 @@
 export class LoginModel {
-   nomeUsuario(username: string) {
+   fillUsername(username: string) {
     return cy.get('#username').type(username)
    }
 
-   senha(password: string) {
+   fillPassword(password: string) {
     return cy.get('#password').type(password)
    }
 
-   botaoLogin() {
+   clickLoginButton() {
     return cy.get('.radius').click()
    }
 
-   mensagem(texto: string) {
-    return cy.get('#flash').should('contain', texto)
+   assertMessage(message: string) {
+    return cy.get('#flash').should('contain', message)
    }
 
-   url(url: string) {
-    return cy.url().should('include', url)
+   assertUrlContains(path: string) {
+    return cy.url().should('include', path)
    }
 }

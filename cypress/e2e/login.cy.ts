@@ -9,35 +9,35 @@ describe('Login Test', () => {
   })
 
   it('Mensagem de erro ao não informar username', () => {
-    $page.senha('SuperSecretPassword!')
-    $page.botaoLogin()
-    $page.mensagem('Your username is invalid!')
+    $page.fillPassword('SuperSecretPassword!')
+    $page.clickLoginButton()
+    $page.assertMessage('Your username is invalid!')
   })
 
   it('Mensagem de erro ao não informar senha', () => {
-    $page.nomeUsuario('practice')
-    $page.botaoLogin()
-    $page.mensagem('Your username is invalid!')
+    $page.fillUsername('practice')
+    $page.clickLoginButton()
+    $page.assertMessage('Your username is invalid!')
   })
 
   it('Login com sucesso', () => {
-    $page.nomeUsuario('tomsmith')
-    $page.senha('SuperSecretPassword!')
-    $page.botaoLogin()
-    $page.mensagem('You logged into a secure area!')
+    $page.fillUsername('tomsmith')
+    $page.fillPassword('SuperSecretPassword!')
+    $page.clickLoginButton()
+    $page.assertMessage('You logged into a secure area!')
     cy.url().should('include', 'secure')
   })
 
-  it('Mensagem de erro ao informar username ou senha incorretos', () => {
-    $page.nomeUsuario(faker.internet.username())
-    $page.senha(faker.internet.password())
-    $page.botaoLogin()
-    $page.mensagem('Your username is invalid!')
+  it('should show error message with invalid credentials', () => {
+    $page.fillUsername(faker.internet.username())
+    $page.fillPassword(faker.internet.password())
+    $page.clickLoginButton()
+    $page.assertMessage('Your username is invalid!')
   })
 
-  it('Mensagem de erro ao tentar acessar URL de área logada diretamente', () => {
+  it('should prevent unauthorized access to secure area', () => {
     cy.visit('https://the-internet.herokuapp.com/secure')
-    $page.url('login')
-    $page.mensagem('You must login to view the secure area!')
+    $page.assertUrlContains('login')
+    $page.assertMessage('You must login to view the secure area!')
   })
 }) 
