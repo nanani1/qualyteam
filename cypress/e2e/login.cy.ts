@@ -1,4 +1,5 @@
 import { LoginModel } from '../models/login.model'
+import { faker } from '@faker-js/faker'
 
 const $page = new LoginModel()
 
@@ -27,9 +28,9 @@ describe('Login Test', () => {
     cy.url().should('include', 'secure')
   })
 
-  it('Mensagem de erro ao informar username incorretos', () => {
-    $page.nomeUsuario('teste')
-    $page.senha('SuperSecretPassword!')
+  it('Mensagem de erro ao informar username ou senha incorretos', () => {
+    $page.nomeUsuario(faker.internet.username())
+    $page.senha(faker.internet.password())
     $page.botaoLogin()
     $page.mensagem('Your username is invalid!')
   })
