@@ -13,6 +13,9 @@ devDependencies:
   '@types/cypress':
     specifier: ^1.1.6
     version: 1.1.6
+  '@types/node':
+    specifier: ^24.0.1
+    version: 24.0.1
   typescript:
     specifier: ^5.8.3
     version: 5.8.3
@@ -62,7 +65,6 @@ packages:
     requiresBuild: true
     dependencies:
       undici-types: 7.8.0
-    optional: true
 
   /@types/sinonjs__fake-timers@8.1.1:
     resolution: {integrity: sha512-0kSuKjAS0TrGLJ0M/+8MaFkGsQhZpB6pxOmvS3K8FYI72K//YmdfoW9X2qPsAKh1mkwxGD5zib9s1FIFed6E8g==}
@@ -968,7 +970,6 @@ packages:
   /undici-types@7.8.0:
     resolution: {integrity: sha512-9UJ2xGDvQ43tYyVMpuHlsgApydB8ZKfVYTsLDhXkFL/6gfkp+U8xTGdh8pMJv1SpZna0zxG1DwsKZsreLbXBxw==}
     requiresBuild: true
-    optional: true
 
   /universalify@2.0.1:
     resolution: {integrity: sha512-gptHNQghINnc/vTGIk0SOFGFNXw7JVrlRUtConJRlvaw6DuX0wO5Jeko9sWrMBhh+PsYAZ7oXAiOnf/UKogyiw==}
