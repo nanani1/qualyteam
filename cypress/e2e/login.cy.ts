@@ -35,4 +35,9 @@ describe('Login Test', () => {
     $page.mensagem('Your username is invalid!')
   })
 
+  it('Mensagem de erro ao tentar acessar URL de área logada diretamente', () => {
+    cy.visit('https://the-internet.herokuapp.com/secure')
+    $page.url('login')
+    $page.mensagem('You must login to view the secure area!')
+  })
 }) 

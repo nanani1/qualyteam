@@ -14,5 +14,8 @@ export class LoginModel {
    mensagem(texto: string) {
     return cy.get('#flash').should('contain', texto)
    }
-}
 
+   url(url: string) {
+    return cy.url().should('include', url)
+   }
+}
