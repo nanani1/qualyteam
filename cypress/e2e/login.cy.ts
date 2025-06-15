@@ -27,4 +27,11 @@ describe('Login Test', () => {
     cy.url().should('include', 'secure')
   })
 
+  it('Mensagem de erro ao informar username incorretos', () => {
+    $page.nomeUsuario('teste')
+    $page.senha('SuperSecretPassword!')
+    $page.botaoLogin()
+    $page.mensagem('Your username is invalid!')
+  })
+
 }) 
