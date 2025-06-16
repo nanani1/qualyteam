@@ -5,28 +5,34 @@ describe('Upload Test', () => {
     cy.visit('https://the-internet.herokuapp.com/upload')
   })
 
-  it('sFazer upload através do botão ‘choose file’', () => {
-    // Usar una ruta relativa desde la raíz del proyecto
+  it('Fazer upload através do botão choose file', () => {
+    // Dado que estou na página de upload
+    // E tenho um arquivo para enviar
     cy.get('#file-upload').selectFile('cypress/upload/file1.pdf')
     
-    // Verificar que el archivo fue seleccionado
+    // Quando o arquivo é selecionado
     cy.get('#file-upload').should('have.value', 'C:\\fakepath\\file1.pdf')
     
-    // Hacer click en el botón de upload
+    // E clico no botão de upload
     cy.get('#file-submit').click()
     
-    // Verificar que el upload fue exitoso
+    // Então devo ver a mensagem de upload bem-sucedido
     cy.get('h3').should('contain', 'File Uploaded!')
   })
 
   it('Fazer upload através da área de upload marcada', () => {
-
-   // Hacer click en el botón de upload
+    // Dado que estou na página de upload
+    // Quando clico na área de upload marcada
     cy.get('#drag-drop-upload').click()
     
+    // Então devo ver a área de upload destacada
   })
 
-  it('Fazer upload de uma sequência de arquivos', () => {
+  it('Fazer upload através da área de upload marcada', () => {
+    // Dado que estou na página de upload
+    // Quando arrasto um arquivo para a área de upload
+    cy.get('#drag-drop-upload').click()
     
+    // Então devo ver o arquivo listado na área de upload
   })
 })
