@@ -24,6 +24,4 @@ jobs:
 
       - name: Executar testes Cypress
         uses: cypress-io/github-action@v6
-        with:
-          start: pnpm test
-          browser: chrome
+
